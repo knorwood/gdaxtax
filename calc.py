@@ -74,33 +74,6 @@ def get_all_transactions_grouped(table_files):
     return dt_id_txns
 
 
-class CostBasisRecord(object):
-
-    def __init__(self, asset_type, rate, amount):
-        self.asset_type = asset_type
-        self.rate = rate
-        self.amount = amount
-
-    def combine(self, other_cbr):
-        """
-        Args:
-            other_cbr (CostBasisRecord):
-        Returns (CostBasisRecord):
-        """
-        assert self.asset_type == other_cbr.asset_type
-        assert self.rate == other_cbr.rate
-        return CostBasisRecord(self.asset_type, self.rate, self.amount + other_cbr.amount)
-
-
-# class Transaction(object):
-#
-#     def __init__(self, source_asset, target_asset, source_amount, target_amount):
-#         self.source_asset = source_asset
-#         self.target_asset = target_asset
-#         self.source_amount = source_amount
-#         self.target_amount = target_amount
-
-
 class Account(object):
 
     def __init__(self, asset_types):
@@ -269,6 +242,7 @@ def main():
     print "ALL", total_ob, .32 * total_ob
     print gdax_account.assets
     print gdax_account.cost_basis_heaps
+
 
 if __name__ == '__main__':
     main()
