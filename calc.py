@@ -181,7 +181,7 @@ class Account(object):
                         (neg_rate * from_per_to_rate, remainder_new)
                     )
                     amount -= remainder_old
-                    heapq.heappush(self.cost_basis_heaps[to_txn.asset], (neg_rate, amount))
+                    heapq.heappush(self.cost_basis_heaps[from_txn.asset], (neg_rate, amount))
                     remainder_old = 0
         for asset, value in self.assets.iteritems():
             assert value >= 0, 'Asset %s must be non-negative' % asset
